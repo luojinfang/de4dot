@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2011-2015 de4dot@gmail.com
 
     This file is part of de4dot.
@@ -30,7 +30,7 @@ namespace de4dot.code.deobfuscators.Eazfuscator_NET {
 
 		public VersionDetector(ModuleDefMD module, StringDecrypter stringDecrypter) {
 			this.stringDecrypter = stringDecrypter;
-			this.frameworkType = DotNetUtils.GetFrameworkType(module);
+			frameworkType = DotNetUtils.GetFrameworkType(module);
 		}
 
 		public string Detect() {
@@ -889,10 +889,7 @@ namespace de4dot.code.deobfuscators.Eazfuscator_NET {
 			return null;
 		}
 
-		string GetNestedTypeName(int n) {
-			var nestedType = GetNestedType(n);
-			return nestedType == null ? null : nestedType.FullName;
-		}
+		string GetNestedTypeName(int n) => GetNestedType(n)?.FullName;
 
 		bool CheckTypeFields(string[] fieldTypes) {
 			if (fieldTypes.Length != stringDecrypter.Type.Fields.Count)
